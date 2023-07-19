@@ -1,0 +1,26 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('/assets/images/movie-theater-4609877.jpg');">
+  <div class="container">
+    <h1 class="text-center">Save any kind of movie</h1>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="cards">
+      <% @lists.each do |list| %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.movie.poster_url %>);">
+          <h2><%= list.name %></h2>
+          <ul class="list-group mb-3">
+            <% list.bookmarks.each do |bookmark| %>
+              <li class="list-group-item">
+                <%= bookmark.movie.title %>
+              </li>
+            <% end %>
+          </ul>
+          <%= link_to "View List", list_path(list), class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+      <%= link_to "Create a movie list", new_list_path, class: 'btn btn-primary' %>
+    </div>
+  </div>
+</div>
